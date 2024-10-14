@@ -7,14 +7,16 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await client.auth.signUp({
+      const result = await client.auth.signInWithPassword({
         email,
         password,
       })
-      console.log(data)
+      console.log(result);
+      console.log(email)
     } catch (error) {
       console.log(error)
       
@@ -27,10 +29,9 @@ function Login() {
         <input type="email"  name='email' placeholder='tuemail@mail.com'
         onChange={(e) => setEmail(e.target.value)}
         />
-        <input type="password"  name='password' placeholder='contraseña'
+        <input type="password"  name='password' placeholder='xxxxxxxxxx'
         onChange={(e) => setPassword(e.target.value)}
         />
-
         <button>Enviar</button>
       </form>
     </div>
